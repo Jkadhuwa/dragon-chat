@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo '🏗️👷 Styling, testing your project before committing'
+
+# Check Prettier standards
+yarn run prettier || 
+(
+    echo '🤢🤮🤢🤮 Its FOKING RAW - Your styling looks disgusting. 🤢🤮🤢🤮
+            Prettier Check Failed. Run npm run format, add changes and try commit again.';
+    false;
+)
+
+# Check ESlint standards
+yarn run lint || 
+(
+    echo '😤🏀👋😤 Get that weak shit out of here! 😤🏀👋😤 
+        ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+    false; 
+)
+
+
+# If everything passes... Now we can commit
+echo '🤔🤔🤔🤔... Alright.... Code looks good to me... Trying to test now. 🤔🤔🤔🤔'
+
+yarn run test ||
+(
+    echo '❌👷🔨❌ Better call Moses... Because your test failed ❌👷🔨❌.'
+    false;
+)
+
+# If everything passes... Now we can commit
+echo '✅✅✅✅ You win this time... I am committing this now. ✅✅✅✅'
