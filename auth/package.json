@@ -41,6 +41,11 @@
   },
   "lint-staged": {
     "src/**/*.{js, ts}": ["eslint", "prettier --write .", "git add"]
+  },
+  "husky":{
+    "hooks":{
+      "pre-commit": "lint-staged"
+    }
   }
   
 }
