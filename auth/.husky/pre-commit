@@ -1,5 +1,5 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
 
 echo '🏗️👷 Styling, testing your project before committing'
 
@@ -30,4 +30,4 @@ yarn run test ||
 )
 
 # If everything passes... Now we can commit
-echo '✅✅✅✅ You win this time... I am committing this now. ✅✅✅✅'
+echo '✅✅✅✅ You win this time... I am committing this now. ✅✅✅✅
