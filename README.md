@@ -16,8 +16,9 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+<!-- [![MIT License][license-shield]][license-url] -->
+
 
 
 
@@ -25,7 +26,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/jkadhuwa/dragon-chat">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo_red.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">DRAGON-CHAT</h3>
@@ -218,8 +219,8 @@ Project Link: [https://github.com/jkadhuwa/dragon-chat](https://github.com/jkadh
 [stars-url]: https://github.com/jkadhuwa/dragon-chat/stargazers
 [issues-shield]: https://img.shields.io/github/issues/jkadhuwa/dragon-chat.svg?style=for-the-badge
 [issues-url]: https://github.com/jkadhuwa/dragon-chat/issues
-[license-shield]: https://img.shields.io/github/license/jkadhuwa/dragon-chat.svg?style=for-the-badge
-[license-url]: https://github.com/jkadhuwa/dragon-chat/blob/master/LICENSE.txt
+<!-- [license-shield]: https://img.shields.io/github/license/jkadhuwa/dragon-chat.svg?style=for-the-badge
+[license-url]: https://github.com/jkadhuwa/dragon-chat/blob/master/LICENSE.txt -->
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/kadhuwa-musinda-a39346123
 [product-screenshot]: images/screenshot.png
