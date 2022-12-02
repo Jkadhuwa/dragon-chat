@@ -1,5 +1,6 @@
 {
-  "roots": ["<rootDir>/src"],
+  "preset": "ts-jest",
+  "globalSetup": "./src/utils/test-utils/globalSetup.ts",
   "testMatch": [
     "**/__tests__/**/*.+(ts|tsx|js)",
     "**/?(*.)+(spec|test).+(ts|tsx|js)"
@@ -12,7 +13,8 @@
     "./src/**/*.ts",
     "!**/node_modules/**",
     "!**/vendor/**",
-    "!./src/index.ts"
+    "!./src/index.ts",
+    "!./src/database/index.ts"
   ],
   "coverageReporters": ["text", "json", "lcov"],
   "verbose": true

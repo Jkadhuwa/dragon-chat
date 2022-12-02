@@ -1,18 +1,20 @@
 import request from 'supertest';
-
+import mongoose from 'mongoose';
 import app, { SIGNUP_ROUTE } from '../../app';
 import signupData from '../../__mocks__/signupData.json';
+import { User } from '../../models';
+import Logger from '../../../lib/logger';
 
-beforeAll(() => {
-  // start the database
-});
-beforeEach(() => {
-  // clean up the database
-});
-afterAll(() => {
-  // close the database connection
+beforeAll(async () => {
+  // put your client connection code here, example with mongoose:
+  await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:44795');
+  Logger.debug(process.env.MONGO_URI);
 });
 
+afterAll(async () => {
+  // put your client disconnection code here, example with mongodb:
+  await mongoose.disconnect();
+});
 /**
  * Tests allowed methos to signup route
  *  - Allowed Method: POST
@@ -39,7 +41,7 @@ describe('Tests for signup route method', () => {
  *           -- Min of 2
  */
 
-describe('Test for firstname validity', () => {
+describe('Tests for firstname validity', () => {
   it('Should return 400, if firstname is invalid', async () => {
     await request(app)
       .post(SIGNUP_ROUTE)
@@ -80,7 +82,7 @@ describe('Test for firstname validity', () => {
  * Tests for lastname field
  */
 
-describe('Test for lastname validity', () => {
+describe('Tests for lastname validity', () => {
   it('Should return 400, if lastname is invalid', async () => {
     await request(app)
       .post(SIGNUP_ROUTE)
@@ -121,7 +123,7 @@ describe('Test for lastname validity', () => {
  * Tests for email field
  */
 
-describe('Test for email validity', () => {
+describe('Tests for email validity', () => {
   it('Should return 400, if email is invalid', async () => {
     await request(app)
       .post(SIGNUP_ROUTE)
@@ -138,7 +140,9 @@ describe('Test for email validity', () => {
   });
 });
 
-describe('Test for username validity', () => {
+// Tests for username field
+
+describe('Tests for username validity', () => {
   it('Should return 400, if username is invalid', async () => {
     await request(app)
       .post(SIGNUP_ROUTE)
@@ -165,6 +169,7 @@ describe('Test for username validity', () => {
   });
 });
 
+// Tests for password field
 describe('Test for password validity', () => {
   it('Should return 400, if password is invalid', async () => {
     await request(app)
@@ -192,6 +197,7 @@ describe('Test for password validity', () => {
   });
 });
 
+// Tests for DOB field
 describe('Test for DOB validity', () => {
   it('Should return invalid dob error with status code 400, if dob is invalid', async () => {
     await request(app)
@@ -204,18 +210,19 @@ describe('Test for DOB validity', () => {
     expect(response.body.errors[0].msg).toBe('Enter valid date 01-01-2002');
   });
 
-  it('Should create user and return status code 201, if dob is invalid', async () => {
-    await request(app).post(SIGNUP_ROUTE).send(signupData.emptyDOB).expect(201);
-
+  it('Should create user and return status code 201, if dob is empty', async () => {
     const response = await request(app)
       .post(SIGNUP_ROUTE)
       .send(signupData.emptyDOB);
+    expect(response.status).toEqual(201);
     expect(response.body.message).toBe('User created successfully');
   });
 });
 
+// Tests for input sanitization and mormalization
+
 describe('Test sanitization of user inputs', () => {
-  const normalizedEmail = 'justinemsinda@gmail.com';
+  const normalizedEmail = 'musinda@gmail.com';
 
   it('Should not contain uppercase letters in the email domain section', async () => {
     const response = await request(app)
@@ -233,5 +240,36 @@ describe('Test sanitization of user inputs', () => {
     expect(response.body.data.password).not.toEqual(
       signupData.escapeCharacters
     );
+  });
+});
+
+// Tests for saving user to DB
+
+describe('Tests for saving user info to DB', () => {
+  it('Should successfully save user info into to the database if its valid', async () => {
+    const response = await request(app)
+      .post(SIGNUP_ROUTE)
+      .send(signupData.correctData)
+      .expect(201);
+    expect(response.body.data.email).toEqual(signupData.correctData.email);
+    const user = await User.findOne({ email: response.body.data.email });
+    expect(user).toBeDefined();
+    expect(user?.email).toEqual(signupData.correctData.email);
+  });
+
+  it('Should not save user with dublicate email', async () => {
+    const response = await request(app)
+      .post(SIGNUP_ROUTE)
+      .send(signupData.correctData)
+      .expect(409);
+    expect(response.body.message).toEqual('Supplied email already in use');
+  });
+
+  it('Should not save user with dublicate username', async () => {
+    const response = await request(app)
+      .post(SIGNUP_ROUTE)
+      .send(signupData.correctData2)
+      .expect(409);
+    expect(response.body.message).toEqual('Supplied username already in use');
   });
 });

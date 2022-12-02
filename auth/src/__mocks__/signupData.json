@@ -1,102 +1,110 @@
 {
   "correctData": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
     "email": "justinemsinda@gmail.com",
-    "username": "jkadhuwa",
+    "username": "username",
     "password": "kadhu5h",
-    "dob": "22-03-1992"
+    "dob": "02-11-1992"
+  },
+  "correctData2": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "correct@gmail.com",
+    "username": "username",
+    "password": "kadhu5h",
+    "dob": "02-11-1992"
   },
 
   "emptyFirstName": {
-    "first_name": "",
-    "last_name": "Kadhuwa",
+    "firstName": "",
+    "lastName": "Kadhuwa",
     "email": "justinemsinda@gmail.com",
     "username": "jkadhuwa",
     "password": "kadhu5h",
-    "dob": "22-03-1992"
+    "dob": "1992-12-09"
   },
 
   "invalidFirstName": {
-    "first_name": "musinda4",
-    "last_name": "Kadhuwa",
+    "firstName": "musinda4",
+    "lastName": "Kadhuwa",
     "email": "justinemsinda@gmail.com",
     "username": "jkadhuwa",
     "password": "kadhu5h",
-    "dob": "22-03-1992"
+    "dob": "1992-12-09"
   },
 
   "lessThanTwoCharFName": {
-    "first_name": "m",
-    "last_name": "Kadhuwa",
+    "firstName": "m",
+    "lastName": "Kadhuwa",
     "email": "justinemsinda@gmail.com",
     "username": "jkadhuwa",
     "password": "kadhu5h",
-    "dob": "22-03-1992"
+    "dob": "1992-12-09"
   },
 
   "emptylastName": {
-    "first_name": "Kadhuwa",
-    "last_name": "",
+    "firstName": "Kadhuwa",
+    "lastName": "",
     "email": "justinemsinda@gmail.com",
     "username": "jkadhuwa",
     "password": "kadhu5h",
-    "dob": "22-03-1992"
+    "dob": "1992-12-09"
   },
   "invalidLastName": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa!",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa!",
     "email": "justinemsinda@gmail.com",
     "username": "jkadhuwa",
     "password": "kadhu5h",
-    "dob": "22-03-1992"
+    "dob": "1992-12-09"
   },
   "lessThanTwoCharLName": {
-    "first_name": "musinda",
-    "last_name": "K",
+    "firstName": "musinda",
+    "lastName": "K",
     "email": "justinemsinda@gmail.com",
     "username": "jkadhuwa",
     "password": "kadhu5h",
-    "dob": "22-03-1992"
+    "dob": "1992-12-09"
   },
 
   "invalidEmail": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
     "email": "justinemsindagmail.com",
     "username": "jkadhuwa",
     "password": "kadhu5h",
-    "dob": "22-03-1992"
+    "dob": "1992-12-09"
   },
   "emptyEmail": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
     "email": "",
     "username": "jkadhuwa",
     "password": "kadhu5h",
-    "dob": "22-03-1992"
+    "dob": "1992-12-09"
   },
 
   "invalidUsername": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
     "email": "justinemsinda@gmail.com",
     "username": 1234,
     "password": "kadhu5h",
-    "dob": "22-03-1992"
+    "dob": "1992-12-09"
   },
   "invalidPassword": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
     "email": "justinemsinda@gmail.com",
     "username": "jkadhuwa",
     "password": "ka",
-    "dob": "22-03-1992"
+    "dob": "1992-12-09"
   },
 
   "invalidDOB": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
     "email": "justinemsinda@gmail.com",
     "username": "jkadhuwa",
     "password": "kadhu5h",
@@ -104,63 +112,63 @@
   },
 
   "emptyUsername": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
     "email": "justinemsinda@gmail.com",
     "username": "",
     "password": "kadhu5h",
-    "dob": "22-03-1992"
+    "dob": "1992-12-09"
   },
   "lessThanTwoUname": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
     "email": "justinemsinda@gmail.com",
     "username": "m",
     "password": "kadhu5h",
-    "dob": "22-03-1992"
+    "dob": "1992-12-09"
   },
 
   "emptyPassword": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
     "email": "justinemsinda@gmail.com",
     "username": "jkadhuwa",
     "password": "",
-    "dob": "22-03-1992"
+    "dob": "1992-12-09"
   },
   "lessThanSixPassword": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
     "email": "justinemsinda@gmail.com",
     "username": "jkadhuwa",
     "password": "1234",
-    "dob": "22-03-1992"
+    "dob": "26-03-1992"
   },
 
   "emptyDOB": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa",
-    "email": "justinemsinda@gmail.com",
-    "username": "jkadhuwa",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "jkadhuwa@gmail.com",
+    "username": "jkadhuw",
     "password": "kadhu5h",
     "dob": ""
   },
 
   "sanitizeEmail": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa",
-    "email": "justinemsinda@GMAIL.COM",
-    "username": "jkadhuwa",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "musinda@GMAIL.COM",
+    "username": "skadhuwa",
     "password": "kadhu5h",
-    "dob": "22-03-1992"
+    "dob": "02-11-1992"
   },
 
   "escapeCharacters": {
-    "first_name": "musinda",
-    "last_name": "Kadhuwa",
-    "email": "justinemsinda@GMAIL.COM",
-    "username": "jkadhuwa",
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "mail@gmail.com",
+    "username": "mkadhuwa",
     "password": "kadhu5h<>",
-    "dob": "22-03-1992"
+    "dob": "02-11-1992"
   }
 }

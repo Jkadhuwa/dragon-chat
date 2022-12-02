@@ -1,7 +1,7 @@
 import { Schema } from 'express-validator';
 
 const signupSchema: Schema = {
-  first_name: {
+  firstName: {
     trim: true,
     notEmpty: {
       errorMessage: 'first name cannot be empty'
@@ -17,7 +17,7 @@ const signupSchema: Schema = {
     }
   },
 
-  last_name: {
+  lastName: {
     trim: true,
     notEmpty: {
       errorMessage: 'last name cannot be empty'
@@ -81,13 +81,14 @@ const signupSchema: Schema = {
         'username should contain alphabetic characters and or with numeric value'
     }
   },
+
   dob: {
-    trim: true,
     optional: {
       options: {
         checkFalsy: true
       }
     },
+    trim: true,
     isDate: {
       options: {
         format: 'DD-MM-YYYY',
