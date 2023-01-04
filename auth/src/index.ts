@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv';
+import mongoose from 'mongoose';
 import app from './app';
 import Logger from '../lib/logger';
 import { connectDB } from './database';
@@ -8,6 +9,8 @@ const { PORT } = process.env;
 
 connectDB();
 
-app.listen(PORT || 3000, () => {
-  Logger.info(`Server running on Port ${PORT}`);
-});
+if (mongoose.connection.readyState) {
+  app.listen(PORT || 3000, () => {
+    Logger.info(`Server running on Port ${PORT}`);
+  });
+}

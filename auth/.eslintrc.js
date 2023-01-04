@@ -3,8 +3,14 @@ module.exports = {
     browser: true,
     es2021: true
   },
+
   extends: ['airbnb-base', 'airbnb-typescript/base', 'prettier'],
-  overrides: [],
+  overrides: [
+    {
+      files: ['*.ts']
+    }
+  ],
+
   parser: '@typescript-eslint/parser',
   parserOptions: {
     tsconfigRootDir: __dirname,

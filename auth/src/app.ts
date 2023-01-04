@@ -1,5 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express';
 // import cors from 'cors';
+import 'express-async-errors';
+import { errorHandler } from './middleware';
 import { signupRouter } from './routes';
 
 const app = express();
@@ -24,5 +26,7 @@ app.get('/welcome', (req: Request, res: Response) => {
 export const SIGNUP_ROUTE = '/api/v1/auth/signup';
 
 app.use(SIGNUP_ROUTE, signupRouter);
+
+app.use(errorHandler);
 
 export default app;

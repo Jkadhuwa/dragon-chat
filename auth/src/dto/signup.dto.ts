@@ -12,7 +12,7 @@ interface SignupResponseDTO {
   lastName: string;
   email: string;
   username: string;
-  dob?: Date;
+  dob: Date;
   createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date;

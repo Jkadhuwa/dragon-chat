@@ -1,18 +1,17 @@
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import { checkSchema, validationResult } from 'express-validator';
 
 import signupSchema from '../schemas/signup-validation.schema';
 import handleMethodNotAllowed from '../utils';
 
 import createUser from '../controllers/signup.controller';
-// import Logger from '../../lib/logger';
 
 const signupRouter = Router();
 
 signupRouter.post(
   '/',
   checkSchema(signupSchema),
-  async (req: Request, res: Response) => {
+  async (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({
@@ -20,16 +19,8 @@ signupRouter.post(
         errors: errors.array()
       });
     }
-    // Logger.debug(req.body)
 
-    return createUser(req.body, res);
-
-    // const { firstName, lastName, email, password, dob,username} = req.body;
-
-    //  const existingUser =  await User.findOne({email});
-    //  if(existingUser){
-    //   return res.status(409).json({success: false, message: 'Supplied email already in use'})
-    //  }
+    return createUser(req.body, res, next);
   }
 );
 

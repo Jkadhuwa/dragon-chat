@@ -1,29 +1,28 @@
-import { Response } from 'express';
+import { Response, NextFunction } from 'express';
 import { SignupRequestDTO, SignupResponseDTO } from '../dto/signup.dto';
 import {
   create,
   checkEmailExists,
   checkUsernameExists
 } from '../services/signup.service';
+import UsernameExistException from '../exceptions/UsernameException';
+import EmailExistException from '../exceptions/EmailExistsExpection';
 
 const createUser = async (
   payload: SignupRequestDTO,
-  res: Response
+  res: Response,
+  next: NextFunction
 ): Promise<SignupResponseDTO | any> => {
   const { email, username } = payload;
   const emailExist = await checkEmailExists(email);
   const usernameExists = await checkUsernameExists(username);
 
   if (emailExist) {
-    return res
-      .status(409)
-      .json({ success: false, message: 'Supplied email already in use' });
+    return next(new EmailExistException(email));
   }
 
   if (usernameExists) {
-    return res
-      .status(409)
-      .json({ success: false, message: 'Supplied username already in use' });
+    return next(new UsernameExistException(username));
   }
 
   const createdUser = await create(payload);
@@ -31,7 +30,16 @@ const createUser = async (
   return res.status(201).json({
     success: true,
     message: 'User created successfully',
-    data: createdUser
+    data: {
+      firstName: createdUser.firstName,
+      lastName: createdUser.lastName,
+      email: createdUser.email,
+      username: createdUser.username,
+      dob: createdUser.dob,
+      createdAt: createdUser.createdAt,
+      updatedAt: createdUser.updatedAt,
+      deletedAt: createdUser.deletedAt
+    }
   });
 };
 

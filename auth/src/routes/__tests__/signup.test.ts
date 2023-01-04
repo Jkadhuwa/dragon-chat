@@ -3,12 +3,10 @@ import mongoose from 'mongoose';
 import app, { SIGNUP_ROUTE } from '../../app';
 import signupData from '../../__mocks__/signupData.json';
 import { User } from '../../models';
-import Logger from '../../../lib/logger';
 
 beforeAll(async () => {
   // put your client connection code here, example with mongoose:
   await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:44795');
-  Logger.debug(process.env.MONGO_URI);
 });
 
 afterAll(async () => {
@@ -262,7 +260,9 @@ describe('Tests for saving user info to DB', () => {
       .post(SIGNUP_ROUTE)
       .send(signupData.correctData)
       .expect(409);
-    expect(response.body.message).toEqual('Supplied email already in use');
+    expect(response.body.message).toEqual(
+      `email ${signupData.correctData.email} already in use, please select another one`
+    );
   });
 
   it('Should not save user with dublicate username', async () => {
@@ -270,6 +270,8 @@ describe('Tests for saving user info to DB', () => {
       .post(SIGNUP_ROUTE)
       .send(signupData.correctData2)
       .expect(409);
-    expect(response.body.message).toEqual('Supplied username already in use');
+    expect(response.body.message).toEqual(
+      `username ${signupData.correctData.username} already in use, please select another one`
+    );
   });
 });
