@@ -1,0 +1,174 @@
+{
+  "correctData": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "justinemsinda@gmail.com",
+    "username": "username",
+    "password": "kadhu5h",
+    "dob": "02-11-1992"
+  },
+  "correctData2": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "correct@gmail.com",
+    "username": "username",
+    "password": "kadhu5h",
+    "dob": "02-11-1992"
+  },
+
+  "emptyFirstName": {
+    "firstName": "",
+    "lastName": "Kadhuwa",
+    "email": "justinemsinda@gmail.com",
+    "username": "jkadhuwa",
+    "password": "kadhu5h",
+    "dob": "1992-12-09"
+  },
+
+  "invalidFirstName": {
+    "firstName": "musinda4",
+    "lastName": "Kadhuwa",
+    "email": "justinemsinda@gmail.com",
+    "username": "jkadhuwa",
+    "password": "kadhu5h",
+    "dob": "1992-12-09"
+  },
+
+  "lessThanTwoCharFName": {
+    "firstName": "m",
+    "lastName": "Kadhuwa",
+    "email": "justinemsinda@gmail.com",
+    "username": "jkadhuwa",
+    "password": "kadhu5h",
+    "dob": "1992-12-09"
+  },
+
+  "emptylastName": {
+    "firstName": "Kadhuwa",
+    "lastName": "",
+    "email": "justinemsinda@gmail.com",
+    "username": "jkadhuwa",
+    "password": "kadhu5h",
+    "dob": "1992-12-09"
+  },
+  "invalidLastName": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa!",
+    "email": "justinemsinda@gmail.com",
+    "username": "jkadhuwa",
+    "password": "kadhu5h",
+    "dob": "1992-12-09"
+  },
+  "lessThanTwoCharLName": {
+    "firstName": "musinda",
+    "lastName": "K",
+    "email": "justinemsinda@gmail.com",
+    "username": "jkadhuwa",
+    "password": "kadhu5h",
+    "dob": "1992-12-09"
+  },
+
+  "invalidEmail": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "justinemsindagmail.com",
+    "username": "jkadhuwa",
+    "password": "kadhu5h",
+    "dob": "1992-12-09"
+  },
+  "emptyEmail": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "",
+    "username": "jkadhuwa",
+    "password": "kadhu5h",
+    "dob": "1992-12-09"
+  },
+
+  "invalidUsername": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "justinemsinda@gmail.com",
+    "username": 1234,
+    "password": "kadhu5h",
+    "dob": "1992-12-09"
+  },
+  "invalidPassword": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "justinemsinda@gmail.com",
+    "username": "jkadhuwa",
+    "password": "ka",
+    "dob": "1992-12-09"
+  },
+
+  "invalidDOB": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "justinemsinda@gmail.com",
+    "username": "jkadhuwa",
+    "password": "kadhu5h",
+    "dob": "22*03*1992"
+  },
+
+  "emptyUsername": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "justinemsinda@gmail.com",
+    "username": "",
+    "password": "kadhu5h",
+    "dob": "1992-12-09"
+  },
+  "lessThanTwoUname": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "justinemsinda@gmail.com",
+    "username": "m",
+    "password": "kadhu5h",
+    "dob": "1992-12-09"
+  },
+
+  "emptyPassword": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "justinemsinda@gmail.com",
+    "username": "jkadhuwa",
+    "password": "",
+    "dob": "1992-12-09"
+  },
+  "lessThanSixPassword": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "justinemsinda@gmail.com",
+    "username": "jkadhuwa",
+    "password": "1234",
+    "dob": "26-03-1992"
+  },
+
+  "emptyDOB": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "jkadhuwa@gmail.com",
+    "username": "jkadhuw",
+    "password": "kadhu5h",
+    "dob": ""
+  },
+
+  "sanitizeEmail": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "musinda@GMAIL.COM",
+    "username": "skadhuwa",
+    "password": "kadhu5h",
+    "dob": "02-11-1992"
+  },
+
+  "escapeCharacters": {
+    "firstName": "musinda",
+    "lastName": "Kadhuwa",
+    "email": "mail@gmail.com",
+    "username": "mkadhuwa",
+    "password": "kadhu5h<>",
+    "dob": "02-11-1992"
+  }
+}
