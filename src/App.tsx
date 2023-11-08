@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { Toaster } from "@/components/ui/toaster";
 
 import "./globals.css";
 import { Home, RootLayout } from "./_root";
@@ -10,8 +11,8 @@ const App = () => {
       <Routes>
         {/* Public routes */}
         <Route element={<AuthLayout />}>
-          <Route path="/sign-in" element={<SigninForm />} />
-          <Route path="/sign-in" element={<SignupForm />} />
+          <Route path="/signin" element={<SigninForm />} />
+          <Route path="/signup" element={<SignupForm />} />
         </Route>
 
         {/* Private routes */}
@@ -19,6 +20,8 @@ const App = () => {
           <Route index element={<Home />} />
         </Route>
       </Routes>
+
+      <Toaster />
     </main>
   );
 };
