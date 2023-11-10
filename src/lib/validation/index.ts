@@ -17,3 +17,10 @@ export const SignupValidation = z.object({
     .string()
     .min(6, { message: "should have a minimum of 2 characters" }),
 });
+
+export const SigninValidation = z.object({
+  email: z.string().email(),
+  password: z
+    .string()
+    .min(6, { message: "should have a minimum of 2 characters" }),
+});
