@@ -14,14 +14,27 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
 import { SignupValidation } from "@/lib/validation";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Loader from "@/components/shared/Loader";
-import { createUserAccount } from "@/lib/appwrite/api";
+import {
+  useCreateUserAccountMutation,
+  useSigninAccountMutation,
+} from "@/lib/react-query/queriesAndMutataions";
+import { useUserContext } from "@/context/AuthContext";
 
 const SignupForm = () => {
   const { toast } = useToast();
-  const isLoading = false;
+
+  const { checkAuthUser } = useUserContext();
+
+  const navigate = useNavigate();
+  const { mutateAsync: createUserAccount, isPending: isCreatingUser } =
+    useCreateUserAccountMutation();
+
+  const { mutateAsync: signInAccount } =
+    useSigninAccountMutation();
+
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
     defaultValues: {
@@ -41,7 +54,24 @@ const SignupForm = () => {
       });
     }
 
-    // const session = await signInAccount()
+    const session = await signInAccount({
+      email: values.email,
+      password: values.password,
+    });
+
+    if (!session) {
+      return toast({ title: "Sign in failed. Please try again." });
+    }
+    const isLoggedIn = await checkAuthUser();
+    console.log(isLoggedIn);
+    if (isLoggedIn) {
+      form.reset();
+      navigate("/");
+    } else {
+      return toast({
+        title: "Sign up falied. Please try again.",
+      });
+    }
   }
   return (
     <Form {...form}>
@@ -62,9 +92,9 @@ const SignupForm = () => {
               <FormItem>
                 <FormLabel>Full Name</FormLabel>
                 <FormControl>
-                  <Input {...field} type="text" className="shad-input" />
+                  <Input {...field} type="text" className="shad-input_sm" />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="shad-form_message " />
               </FormItem>
             )}
           />
@@ -75,9 +105,9 @@ const SignupForm = () => {
               <FormItem>
                 <FormLabel>Username</FormLabel>
                 <FormControl>
-                  <Input {...field} type="text" className="shad-input" />
+                  <Input {...field} type="text" className="shad-input_sm" />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="shad-form_message " />
               </FormItem>
             )}
           />
@@ -88,9 +118,9 @@ const SignupForm = () => {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input {...field} type="email" className="shad-input" />
+                  <Input {...field} type="email" className="shad-input_sm" />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="shad-form_message " />
               </FormItem>
             )}
           />
@@ -101,14 +131,14 @@ const SignupForm = () => {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input {...field} type="password" className="shad-input" />
+                  <Input {...field} type="password" className="shad-input_sm" />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="shad-form_message " />
               </FormItem>
             )}
           />
           <Button type="submit" className="shad-button_primary">
-            {isLoading ? (
+            {isCreatingUser ? (
               <div className="flex-center gap-2">
                 {" "}
                 <Loader />

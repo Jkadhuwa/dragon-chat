@@ -254,10 +254,14 @@
   }
 
   .shad-form_message {
-    @apply text-red !important;
+    @apply text-red font-light mt-0  !important;
   }
 
-  .shad-input {
+ 
+  .shad-input_sm{
+    @apply h-9 bg-dark-4 border-none placeholder:text-light-4 focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-light-3 !important;
+  }
+  .shad-input__md {
     @apply h-12 bg-dark-4 border-none placeholder:text-light-4 focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-light-3 !important;
   }
 
