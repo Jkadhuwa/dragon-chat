@@ -19,7 +19,7 @@ import { SigninValidation } from "@/lib/validation";
 
 
 import Loader from "@/components/shared/Loader";
-import { useSigninAccountMutation } from "@/lib/react-query/queriesAndMutataions";
+import { useSignInAccountMutation } from "@/lib/react-query/queriesAndMutataions";
 import { useUserContext } from "@/context/AuthContext";
 
 const SigninForm = () => {
@@ -30,7 +30,7 @@ const SigninForm = () => {
   const navigate = useNavigate();
 
   const { mutateAsync: signInAccount } =
-    useSigninAccountMutation();
+    useSignInAccountMutation();
 
   const form = useForm<z.infer<typeof SigninValidation>>({
     resolver: zodResolver(SigninValidation),
@@ -51,7 +51,7 @@ const SigninForm = () => {
       return toast({ title: "Sign in failed. Please try again." });
     }
     const isLoggedIn = await checkAuthUser();
-    console.log(isLoggedIn);
+    
     if (isLoggedIn) {
       form.reset();
       navigate("/");
