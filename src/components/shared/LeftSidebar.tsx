@@ -1,12 +1,16 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useSignOutAccountMutation } from "@/lib/react-query/queriesAndMutataions";
 import { useUserContext } from "@/context/AuthContext";
+import { sidebarLinks } from "@/constants";
+import { INavLink } from "@/types";
 
 const LeftSidebar = () => {
   const { mutate: signOut, isSuccess } = useSignOutAccountMutation();
   const navigate = useNavigate();
+
+  const { pathname } = useLocation();
 
   const { user } = useUserContext();
 
@@ -37,7 +41,42 @@ const LeftSidebar = () => {
             <p className="small-regular text-light-3">@{user.username}</p>
           </div>
         </Link>
+        <ul className="flex flex-col gap-6">
+          {sidebarLinks.map((link: INavLink) => {
+            const isActive = pathname === link.route;
+            return (
+              <li
+                className={`group leftsidebar-link ${
+                  isActive && "bg-primary-500"
+                }`}
+                key={link.label}
+              >
+                <NavLink
+                  to={link.route}
+                  className="flex gap-4 items-center py-2 px-4"
+                >
+                  <img
+                    src={link.imgURL}
+                    alt={link.label}
+                    className={`group-hover:invert-white ${
+                      isActive && "invert-white"
+                    }`}
+                  />
+                  {link.label}
+                </NavLink>
+              </li>
+            );
+          })}
+        </ul>
       </div>
+      <Button
+        variant="ghost"
+        className="shad-button_ghost"
+        onClick={() => signOut()}
+      >
+        <img src="/assets/icons/logout.svg" alt="logout" />
+        <p className="small-medium lg:base-medium">Logout</p>
+      </Button>
     </nav>
   );
 };

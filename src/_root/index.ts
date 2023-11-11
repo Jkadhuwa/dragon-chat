@@ -1,2 +1,10 @@
 export { default as Home } from "./pages/Home";
 export { default as RootLayout } from "./RootLayout";
+export { default as Explore } from "./pages/Explore";
+export { default as Saved } from "./pages/Saved";
+export { default as AllUsers } from "./pages/AllUsers";
+export { default as CreatePost } from "./pages/CreatePost";
+export { default as Profile } from "./pages/Profile";
+export { default as UpdateProfile } from "./pages/UpdateProfile";
+export { default as EditPost } from "./pages/EditPost";
+export { default as PostDetails } from "./pages/PostDetails";
