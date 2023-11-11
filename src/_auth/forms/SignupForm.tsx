@@ -19,7 +19,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Loader from "@/components/shared/Loader";
 import {
   useCreateUserAccountMutation,
-  useSigninAccountMutation,
+  useSignInAccountMutation,
 } from "@/lib/react-query/queriesAndMutataions";
 import { useUserContext } from "@/context/AuthContext";
 
@@ -33,7 +33,7 @@ const SignupForm = () => {
     useCreateUserAccountMutation();
 
   const { mutateAsync: signInAccount } =
-    useSigninAccountMutation();
+    useSignInAccountMutation();
 
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
