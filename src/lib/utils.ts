@@ -18,7 +18,9 @@ export function dateFormatter(dateString: string) {
   const days: number = duration.as("days");
 
   if (seconds < 60) {
-    return `${Math.floor(seconds)} ${seconds === 1 ? "Just now" : "seconds ago"} `;
+    return `${Math.floor(seconds)} ${
+      seconds === 1 ? "Just now" : "seconds ago"
+    } `;
   } else if (minutes < 60) {
     return `${Math.floor(minutes)} ${minutes === 1 ? "minute" : "minutes"} ago`;
   } else if (hours < 24) {
@@ -27,3 +29,7 @@ export function dateFormatter(dateString: string) {
     return `${Math.floor(days)} ${days === 1 ? "day" : "days"} ago`;
   }
 }
+
+export const checkIsLiked = (likeList: string[], userId: string) => {
+  return likeList.includes(userId);
+};
