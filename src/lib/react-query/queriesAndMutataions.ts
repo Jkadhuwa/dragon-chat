@@ -10,13 +10,15 @@ import {
   createUserAccount,
   deleteSavedPost,
   getCurrentUser,
+  getPostById,
   getRecentPosts,
   likePost,
   savePost,
   signInAccount,
   signOutAccount,
+  updatePost,
 } from "../appwrite/api";
-import { INewUser } from "@/types";
+import { INewUser, IUpdatePost } from "@/types";
 import { QUERY_KEYS } from "@/lib/react-query/queryKeys";
 import { INewPost } from "@/types";
 
@@ -111,8 +113,7 @@ export const useDeleteSavedPost = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ( savedRecordId: string ) =>
-      deleteSavedPost(savedRecordId),
+    mutationFn: (savedRecordId: string) => deleteSavedPost(savedRecordId),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
@@ -127,9 +128,30 @@ export const useDeleteSavedPost = () => {
   });
 };
 
-export const useGetCurrentUser=  () => {
+export const useGetCurrentUser = () => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_CURRENT_USER],
-    queryFn: getCurrentUser
-  })
-}
+    queryFn: getCurrentUser,
+  });
+};
+
+export const useGetPostById = (postId: string) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_POST_BY_ID, postId],
+    queryFn: () => getPostById(postId),
+    enabled: !!postId,
+  });
+};
+
+export const useUpdatePost = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (post: IUpdatePost) => updatePost(post),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_POST_BY_ID, data?.$id],
+      });
+    },
+  });
+};
