@@ -19,7 +19,7 @@ export function dateFormatter(dateString: string) {
 
   if (seconds < 60) {
     return `${Math.floor(seconds)} ${
-      seconds === 1 ? "Just now" : "seconds ago"
+      seconds <= 5 ? "Just now" : "seconds ago"
     } `;
   } else if (minutes < 60) {
     return `${Math.floor(minutes)} ${minutes === 1 ? "minute" : "minutes"} ago`;
